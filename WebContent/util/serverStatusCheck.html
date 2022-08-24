@@ -39,8 +39,8 @@ function StateChangeForJSON()
 {
 	if(xmlHttp.readyState == 4 && xmlHttp.status == 200)
 	{
-		var jsonObj = eval('('+ xmlHttp.responseText + ')');
-		var jsonFetchHostStatus = DOMPurify.sanitize(jsonObj["HostStatus"]);
+		var jsonObj = DOMPurify.sanitize(eval('('+ xmlHttp.responseText + ')'));
+		var jsonFetchHostStatus = jsonObj["HostStatus"];
 		var jsonFetchHostName=jsonObj["HostName"];
 		//get JSON values and output
 		x=document.getElementById('FetchHostName');
