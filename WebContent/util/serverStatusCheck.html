@@ -1,6 +1,7 @@
 <HTML>
 <HEAD><TITLE>Website Service Status</TITLE></HEAD>
 
+<script type="text/javascript" src="purify.js"></script>
 <SCRIPT>
 var xmlHttp = false;
 
@@ -39,7 +40,7 @@ function StateChangeForJSON()
 	if(xmlHttp.readyState == 4 && xmlHttp.status == 200)
 	{
 		var jsonObj = eval('('+ xmlHttp.responseText + ')');
-		var jsonFetchHostStatus = jsonObj["HostStatus"];
+		var jsonFetchHostStatus = DOMPurify.sanitize(jsonObj["HostStatus"]);
 		var jsonFetchHostName=jsonObj["HostName"];
 		//get JSON values and output
 		x=document.getElementById('FetchHostName');
